@@ -147,10 +147,7 @@ const Game = {
         Pong.context.fillStyle = '#000000';
 
         // Draw the end game menu text ('Game Over' and 'Winner')
-        Pong.context.fillText(text,
-            Pong.canvas.width / 2,
-            Pong.canvas.height / 2 + 15
-        );
+       
 
         setTimeout(() => {
             Pong = Object.assign({}, Game);
