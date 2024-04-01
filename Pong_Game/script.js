@@ -183,6 +183,7 @@ const Game = {
 
     // Update all objects (move the player, ai, ball, increment the score, etc.)
     update: function () {
+        if (!this.paused && !this.over) {
         if (!this.over) {
 
             if (this.ball.x <= 0 || this.ball.x >= this.canvas.width - this.ball.width ||
@@ -283,10 +284,12 @@ const Game = {
 
 
         }
+    }
     },
 
     // Draw the objects on the canvas element
     draw: function () {
+        if (!this.paused && !this.over) {
         // Clear the Canvas
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -331,16 +334,21 @@ const Game = {
 
 
 
-
+    }
     },
+
+    // Add a boolean variable to track pause state
+    paused: false,
 
     loop: function () {
         Pong.update();
         Pong.draw();
-
-        // If the game is not over, draw the next frame.
-        if (!Pong.over) requestAnimationFrame(Pong.loop);
+        
+        // Continue the game loop
+        requestAnimationFrame(Pong.loop);
     },
+    
+    
 
     listen: function () {
         document.addEventListener('keydown', function (key) {
@@ -370,6 +378,11 @@ const Game = {
 
 
             if (key.keyCode === 79) Pong.player4.move = DIRECTION.RIGHT;
+
+            // Pause/unpause the game if the 't' key is pressed
+            if (key.keyCode === 84) {
+                Pong.paused = !Pong.paused; // Toggle pause state
+            }
         });
 
         document.addEventListener('keyup', function (key) {
