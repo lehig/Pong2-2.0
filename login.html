@@ -9,6 +9,17 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
         }
+        .container{
+            max-width: 100%;
+            margin-top: 50px;
+            background-color: lightblue;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h3{
+            margin-bottom: 20px;
+            text-align: center;
+        }
         .login-container {
             max-width: 300px;
             margin: 0 auto;
@@ -29,7 +40,8 @@
             margin-bottom: 5px;
         }
         .form-group input {
-            width: 98%;
+            width: 96%;
+            padding: 5px;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
@@ -53,38 +65,45 @@
         <input type="text" id="username" placeholder="Enter your username">
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password">
-    </div>
-    <div class="form-group">
         <button onclick="login()">Login</button>
     </div>
     <div class="form-group">
-        <button onclick="newLogin()">New Login</button>
+        <button onclick="newLogin()">Register</button>
     </div>
 </div>
 
+<div class="container">
+    <h3>
+        Welcome to PONG 2 2.0
+
+        This is a game where you can play the standard game of Pong with 4 people.
+
+        There is no reason anymore to play this classic game with just two.
+    </h3>
+
+</div>
+
 <script>
-    const userDict = {"Username": "Password"};
+    const userDict = {"Username": 0};
     function login() {
 
 
         const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
 
-        if (password === userDict[username] ){
+
+        if ( username in userDict){
             window.location.href = "index.html"
         }
         else {
-            alert("Invalid username or password. Please try again.")
+            alert("Invalid username. Please try again or register as new user.")
         }
 
     }
 
     function newLogin(){
         const username = document.getElementById('username').value;
-        userDict[username] = document.getElementById('password').value;
-        alert("Added Username and Password. Please login.")
+        userDict[username] = 0;
+        alert("Added user. Please login.")
     }
 </script>
 
