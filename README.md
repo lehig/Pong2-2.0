@@ -4,7 +4,7 @@ This is a game where it takes the classic Pong and improves on it by having four
 
 Create a new experience for a beloved and classic game. 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=za6SGFBkZZg&ab_channel=school)
 
 # Development Environment
 
